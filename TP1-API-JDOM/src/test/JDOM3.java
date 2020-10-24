@@ -22,8 +22,8 @@ public class JDOM3 {
 	}
 	static void supprElement(String element) {
 		
-		List listEtudiant = racine.getChildren("etudiant");
-		Iterator i = listEtudiant.iterator();
+		List<Element> listEtudiant = racine.getChildren("etudiant");
+		Iterator<Element> i = listEtudiant.iterator();
 		
 		while (i.hasNext()) {
 			Element courant = (Element) i.next();

@@ -19,9 +19,9 @@ public class JDOM2 {
 		racine = document.getRootElement();
 	}
 	static void afficheALL() {
-		List listEtudiants = racine.getChildren("etudiant");
+		List<Element> listEtudiants = racine.getChildren("etudiant");
 
-		Iterator i = listEtudiants.iterator();
+		Iterator<Element> i = listEtudiants.iterator();
 		while (i.hasNext()) {
 		Element courant = (Element) i.next();
 		System.out.println(courant.getChild("nom").getText());

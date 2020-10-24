@@ -52,9 +52,9 @@ public class test {
 	}
 	
 	static void afficheALL() {
-		List listEtudiants = racine.getChildren("etudiant");
+		List<Element> listEtudiants = racine.getChildren("etudiant");
 
-		Iterator i = listEtudiants.iterator();
+		Iterator<Element> i = listEtudiants.iterator();
 		while (i.hasNext()) {
 		Element courant = (Element) i.next();
 		System.out.println(courant.getChild("nom").getText());
@@ -64,8 +64,8 @@ public class test {
 	
 	static void supprElement(String element) {
 		
-		List listEtudiant = racine.getChildren("etudiant");
-		Iterator i = listEtudiant.iterator();
+		List<Element> listEtudiant = racine.getChildren("etudiant");
+		Iterator<Element> i = listEtudiant.iterator();
 		
 		while (i.hasNext()) {
 			Element courant = (Element) i.next();
