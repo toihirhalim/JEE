@@ -105,8 +105,8 @@ public class test {
 
 		//supprElement("prenoms");
 		affiche();
-		//afficheALL();
-		//enregistre("Exercice1.xml");
+		afficheALL();
+		//enregistre(file);
 		
 	}
 
