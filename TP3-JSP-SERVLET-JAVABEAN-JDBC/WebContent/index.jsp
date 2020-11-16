@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="" method="POST">
+	<form action="/TraiterLoginServlet" method="POST">
 		<div>
 			<label>Login: 
 				<input type="text" id="login" name="login" required>

@@ -19,7 +19,7 @@
 			</label>
 		</div>
 		<div style="margin-top: 20px;">
-		<button type="submit">Modifier</button>
+			<button type="submit">Ok</button>
 		</div>
 	</form>
 </body>

@@ -31,7 +31,7 @@ public class TraiterLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.sendRedirect("index.jsp");
-		this.getServletContext().getRequestDispatcher( "/index.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/Modifier.jsp" ).forward( request, response );
 	}
 
 	/**
