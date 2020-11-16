@@ -3,6 +3,7 @@ package servlet.user;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Connexion {
 		String query = "select * from user";
 		PreparedStatement pstmt = connection.prepareStatement(query); 
 		
-		java.sql.ResultSet rs = pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
 			UserBean user = new UserBean();
@@ -48,7 +49,7 @@ public class Connexion {
 		pstmt.setString(1, login);
 		pstmt.setString(2, password);
 		
-		java.sql.ResultSet rs = pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 		UserBean user = null;
 		
 		while(rs.next()) {
@@ -58,6 +59,23 @@ public class Connexion {
 		}
 		
 		return user;
+	}
+	
+	public static UserBean insert (String login, String password) throws SQLException {
+		String query = "insert into user values (?,?)";
+		PreparedStatement pstmt = connection.prepareStatement(query); 
+		pstmt.setString(1, login);
+		pstmt.setString(2, password);
+
+		pstmt.executeUpdate();
+		
+		UserBean user = user(login, password);
+		
+		return user;
+	}
+
+	public static void main(String [] args) throws SQLException {
+		
 	}
 	
 }
