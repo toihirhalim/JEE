@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>informations...<br>jdgfjvbjig</p>
-	<a href="#">acceuil</a>
+	<h2>User</h2>
+	<p>votre login est: <% out.println(request.getParameter("login")); %></p>
+	<p>votre password est: <% out.println(request.getParameter("password")); %> </p>
+	<a href="#">Modifier</a>
 </body>
 </html>

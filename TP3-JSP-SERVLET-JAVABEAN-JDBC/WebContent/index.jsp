@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/TraiterLoginServlet" method="POST">
+	<h2>Acceuil</h2>
+	<form action="/TP3-JSP-SERVLET-JAVABEAN-JDBC/TraiterLoginServlet" method="POST">
 		<div>
 			<label>Login: 
 				<input type="text" id="login" name="login" required>
@@ -18,6 +19,9 @@
 				<input type="password" id="password" name="password" required>
 			</label>
 		</div>
+		
+		<input type="hidden" id="formName" name="formName" value="loginForm">
+		
 		<div style="margin-top: 20px;">
 		<button type="submit">Ok</button>
 		</div>

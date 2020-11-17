@@ -14,9 +14,5 @@
 		<servlet-name>servlet1</servlet-name>
 		<servlet-class>servlet.user.TraiterLoginServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-	<servlet-name>servlet1</servlet-name>
-		<url-pattern>/bonjour</url-pattern>
-	</servlet-mapping>
 	
 </web-app>
