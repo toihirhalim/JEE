@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Modifier</title>
 </head>
 <body>
 <h2>Modifier</h2>
-	<form action="">
+	<form action="/TP3-JSP-SERVLET-JAVABEAN-JDBC/TraiterLoginServlet" method="POST">
 		<div>
 			<label>Login: 
 				<input type="text" id="login" name="login" required>
@@ -19,6 +19,9 @@
 				<input type="password" id="password" name="password" required>
 			</label>
 		</div>
+		
+		<input type="hidden" id="formName" name="formName" value="ModifierForm">
+		
 		<div style="margin-top: 20px;">
 			<button type="submit">Ok</button>
 		</div>

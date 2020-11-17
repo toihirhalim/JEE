@@ -8,8 +8,8 @@
 </head>
 <body>
 	<h2>User</h2>
-	<p>votre login est: <% out.println(request.getParameter("login")); %></p>
-	<p>votre password est: <% out.println(request.getParameter("password")); %> </p>
-	<a href="#">Modifier</a>
+	<p>Votre Login est: <% out.println(request.getParameter("login")); %></p>
+	<p>Votre Password est: <% out.println(request.getParameter("password")); %> </p>
+	<a href="Modifier.jsp">Modifier</a>
 </body>
 </html>

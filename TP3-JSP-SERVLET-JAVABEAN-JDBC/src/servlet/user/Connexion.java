@@ -74,8 +74,17 @@ public class Connexion {
 		return user;
 	}
 
-	public static void main(String [] args) throws SQLException {
+	public static UserBean update(String login, String password) throws SQLException {
+		String query = "UPDATE user SET password=? WHERE login=?";
+		PreparedStatement pstmt = connection.prepareStatement(query); 
+		pstmt.setString(1, password);
+		pstmt.setString(2, login);
+
+		pstmt.executeUpdate();
 		
+		UserBean user = user(login, password);
+		
+		return user;
 	}
 	
 }
