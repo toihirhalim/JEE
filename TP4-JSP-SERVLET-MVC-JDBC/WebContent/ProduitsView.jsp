@@ -15,8 +15,9 @@
 </style>
 </head>
 <body>
-	<form action="" method="post">
-		<label>Mot Cle: <input type="text" name="mot" id="mot" required></label>
+	<form action="/TP4-JSP-SERVLET-MVC-JDBC/ControlleurServlet" method="post">
+		<label>Mot Cle: <input type="text" name="nom" id="nom" required></label>
+		<input type="hidden" id="formName" name="formName" value="ProduitResearch">
 		<button type="submit">Ok</button>
 	</form>
 	<table style="width:100%">
@@ -28,13 +29,16 @@
 		<%
 			List<Produit> produits = (ArrayList<Produit>)request.getAttribute("produits");
 			
-			for(Produit produit : produits){
-				out.println("<tr>");
-				out.println("<td>"+produit.getId()+"</td>");;
-				out.println("<td>"+produit.getNom()+"</td>");;
-				out.println("<td>"+produit.getPrix()+"</td>");
-				out.println("</tr>");
+			if(produits != null){
+				for(Produit produit : produits){
+					out.println("<tr>");
+					out.println("<td>"+produit.getId()+"</td>");;
+					out.println("<td>"+produit.getNom()+"</td>");;
+					out.println("<td>"+produit.getPrix()+"</td>");
+					out.println("</tr>");
+				}
 			}
+			
 		%>
 	</table>
 </body>
