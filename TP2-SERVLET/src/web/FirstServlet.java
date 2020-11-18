@@ -25,7 +25,9 @@ public class FirstServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("test.do?nom=azerty");
+		this.getServletContext().getRequestDispatcher("/Vue.jsp").forward(request, response);
+		
+		//response.sendRedirect("Vue.jsp?nom="+request.getParameter("nom"));
 	}
 
 	/**
