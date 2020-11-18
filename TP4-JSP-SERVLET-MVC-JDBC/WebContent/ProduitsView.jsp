@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="metier.Produit"%> 
+<%@page import="java.util.List"%> 
+<%@page import="java.util.ArrayList"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +26,13 @@
 			<th>Prix</th>
 		</tr>
 		<%
-			String [][] produits = {{"1","hello", "40.0"},{"2","yep", "50.0"},{"3","hi", "23.0"}};
+			List<Produit> produits = (ArrayList<Produit>)request.getAttribute("produits");
 			
-			for(String [] produit : produits){
+			for(Produit produit : produits){
 				out.println("<tr>");
-				out.println("<td>"+produit[0]+"</td>");;
-				out.println("<td>"+produit[1]+"</td>");;
-				out.println("<td>"+produit[2]+"</td>");
+				out.println("<td>"+produit.getId()+"</td>");;
+				out.println("<td>"+produit.getNom()+"</td>");;
+				out.println("<td>"+produit.getPrix()+"</td>");
 				out.println("</tr>");
 			}
 		%>
