@@ -15,7 +15,7 @@
 </style>
 </head>
 <body>
-	<form action="/TP4-JSP-SERVLET-MVC-JDBC/ControlleurServlet" method="post">
+	<form action="/TP4-JSP-SERVLET-MVC-JDBC/controlleur.do" method="post">
 		<label>Mot Cle: <input type="text" name="nom" id="nom" required></label>
 		<input type="hidden" id="formName" name="formName" value="ProduitResearch">
 		<button type="submit">Ok</button>

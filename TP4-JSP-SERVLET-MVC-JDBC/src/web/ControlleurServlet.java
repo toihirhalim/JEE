@@ -30,7 +30,9 @@ public class ControlleurServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("ProduitsView.jsp");
+		//response.sendRedirect("ProduitsView.jsp");
+		this.getServletContext().getRequestDispatcher("/ProduitsView.jsp").forward(request, response);
+		
 	}
 	
 	/**
