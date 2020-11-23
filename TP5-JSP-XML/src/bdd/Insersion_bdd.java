@@ -2,7 +2,6 @@ package bdd;
 
 import java.util.Random;
 
-import org.jdom2.Attribute;
 import org.jdom2.Element;
 
 public class Insersion_bdd {

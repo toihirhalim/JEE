@@ -36,7 +36,7 @@
 </head>
 <body>
 	<% 
-		session.invalidate();
+		/*session.invalidate();
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String adresse = request.getParameter("adresse");
@@ -53,13 +53,14 @@
 			request.setAttribute("adresse", null);
 			request.setAttribute("password", null);
 			response.sendRedirect("index.html");
-		}
+		}*/
 	%>
 	<header>
 		<h1>Inscription page</h1>
 		<a href="index.html">Acceuil</a>
 	</header>
-	<form action="inscription.jsp" method="POST">
+	
+	<form action="valider.jsp" method="POST">
 		<div class="container">
 			<table>
 				<tr>

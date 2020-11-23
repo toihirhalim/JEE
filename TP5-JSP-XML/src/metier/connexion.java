@@ -15,7 +15,7 @@ import org.jdom2.output.XMLOutputter;
 public class Connexion {
 	public  Document document;
 	public  Element racine;
-	public  String file = System.getProperty("user.dir") + "\\TP.xml";
+	public  String file = "C:\\Users\\Public\\TP1.xml";
 	public  String pracine = "etudiants";
 	
 	
@@ -26,7 +26,6 @@ public class Connexion {
 		}catch(Exception e) {
 			initialize();
 			enregistre();
-
 		}
 	}
 	
