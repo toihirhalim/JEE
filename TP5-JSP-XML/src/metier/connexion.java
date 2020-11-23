@@ -15,7 +15,7 @@ import org.jdom2.output.XMLOutputter;
 public class Connexion {
 	public  Document document;
 	public  Element racine;
-	public  String file = "TP.xml";
+	public  String file = System.getProperty("user.dir") + "\\TP.xml";
 	public  String pracine = "etudiants";
 	
 	
@@ -23,8 +23,6 @@ public class Connexion {
 		
 		try {
 			lireFichier();
-			System.out.println("fichier trouvé");
-
 		}catch(Exception e) {
 			initialize();
 			enregistre();
@@ -36,16 +34,13 @@ public class Connexion {
 		document = new Document();
 		racine = new Element(pracine);
 		document.addContent(racine);
-		System.out.println("document initialisé");
 	}
 	
 	public void enregistre() {
 		try {
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(document, new FileOutputStream(file));
-			System.out.println("fichier enregistré");
 		} catch (java.io.IOException e) {
-			System.out.println("fichier non enregistré");
 		}
 	}
 	
@@ -120,5 +115,6 @@ public class Connexion {
 		Connexion cnx = new Connexion();
 		
 		System.out.println(cnx.addEtudiant(1234, "toihir", "halim", "Tanger", "toihir"));
+		
 	}
 }

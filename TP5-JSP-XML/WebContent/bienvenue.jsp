@@ -20,7 +20,8 @@
 			if(nom != null && prenom != null && password != null){
 				
 				Connexion cnx= new Connexion();
-				System.out.println(cnx.getEtudiant(nom, prenom, password));
+				etudiant = cnx.getEtudiant(nom, prenom, password);
+				session.setAttribute("etudiant", etudiant);
 				
 			}else {
 				response.sendRedirect("utilisateur.html");
