@@ -33,11 +33,12 @@
 </style>
 </head>
 <body>
+<%session.invalidate();%>
 	<header>
 		<h1>Authehtification</h1>
 		<a href="index.html">Acceuil</a>
 	</header>
-	<form action="" method="POST">
+	<form action="bienvenue.jsp" method="POST">
 		<div class="container">
 			<table>
 				<tr>

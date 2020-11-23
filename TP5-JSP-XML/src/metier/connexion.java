@@ -12,44 +12,50 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-public class connexion {
-	public static Document document;
-	public static Element racine;
-	public static String file = "TP.xml";
-	public static String pracine = "etudiants";
+public class Connexion {
+	public  Document document;
+	public  Element racine;
+	public  String file = "TP.xml";
+	public  String pracine = "etudiants";
 	
 	
-	static {
-		String file ="TP.xml";
+	public Connexion() {
+		
 		try {
 			lireFichier();
+			System.out.println("fichier trouvé");
+
 		}catch(Exception e) {
 			initialize();
 			enregistre();
+
 		}
 	}
 	
-
-	public static void initialize() {
+	public  void initialize() {
 		document = new Document();
 		racine = new Element(pracine);
 		document.addContent(racine);
+		System.out.println("document initialisé");
 	}
 	
-	static void enregistre() {
+	public void enregistre() {
 		try {
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(document, new FileOutputStream(file));
-		} catch (java.io.IOException e) {}
+			System.out.println("fichier enregistré");
+		} catch (java.io.IOException e) {
+			System.out.println("fichier non enregistré");
+		}
 	}
 	
-	static void lireFichier() throws Exception {
+	public void lireFichier() throws Exception {
 		SAXBuilder sxb = new SAXBuilder();
 		document = sxb.build(new File(file));
 		racine = document.getRootElement();
 	}
 
-	public static Etudiant addEtudiant(int Eid, String Enom, String Eprenom, String Eadresse, String Epassword) {
+	public Etudiant addEtudiant(int Eid, String Enom, String Eprenom, String Eadresse, String Epassword) {
 		if(Enom != "" && Eprenom != "" && Epassword !="") {
 			try {
 				Element etudiant = new Element("etudiant");
@@ -61,12 +67,17 @@ public class connexion {
 
 				Element nom = new Element("nom");
 				Element prenom = new Element("prenom");
+				Element adresse = new Element("adresse");
+				Element password = new Element("password");
 				nom.setText(Enom);
 				prenom.setText(Eprenom);
+				adresse.setText(Eadresse);
+				password.setText(Epassword);
 				
 				etudiant.addContent(nom);
 				etudiant.addContent(prenom);
-				
+				etudiant.addContent(adresse);
+				etudiant.addContent(password);
 				enregistre();
 				return new Etudiant(Eid, Enom, Eprenom, Eadresse, Epassword);
 				
@@ -78,7 +89,7 @@ public class connexion {
 		}
 	}
 	
-	public static Etudiant getEtudiant(String Enom, String Eprenom, String Epassword) {
+	public  Etudiant getEtudiant(String Enom, String Eprenom, String Epassword) {
 		
 		List<Element> listEtudiant = racine.getChildren("etudiant");
 		Iterator<Element> i = listEtudiant.iterator();
@@ -104,5 +115,10 @@ public class connexion {
 		}
 		return null;
 	}
-
+	
+	public static void main(String [] args) {
+		Connexion cnx = new Connexion();
+		
+		System.out.println(cnx.addEtudiant(1234, "toihir", "halim", "Tanger", "toihir"));
+	}
 }

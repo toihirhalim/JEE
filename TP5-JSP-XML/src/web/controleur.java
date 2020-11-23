@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import metier.Connexion;
+
 /**
  * Servlet implementation class controleur
  */
@@ -27,6 +29,10 @@ public class controleur extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Connexion cnx = new Connexion();
+		
+		System.out.println(cnx.addEtudiant(1234, "toihir", "halim", "Tanger", "toihir"));
+	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

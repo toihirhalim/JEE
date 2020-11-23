@@ -1,6 +1,11 @@
 package metier;
 
 public class Etudiant {
+	@Override
+	public String toString() {
+		return "Etudiant [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", password="
+				+ password + "]";
+	}
 	private int id;
 	private String nom;
 	private String prenom;
