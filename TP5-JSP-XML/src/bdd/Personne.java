@@ -49,6 +49,11 @@ public class Personne {
 		}
 	}
 	
+	public boolean existe() {
+		Selection_bdd s = new Selection_bdd();
+		return s.dejaExist(nom, prenom, password);
+	}
+	
 	public String identificateur() {
 		Selection_bdd s = new Selection_bdd();
 		String a = s.identificateur(nom, prenom);

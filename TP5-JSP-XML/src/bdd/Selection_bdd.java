@@ -12,6 +12,12 @@ public class Selection_bdd {
 		Element etudiant = getElement(nom, prenom);
 		return etudiant != null;
 	}
+	
+	public boolean dejaExist(String nom, String prenom, String password) {
+		// TODO Auto-generated method stub
+		Element etudiant = getElement(nom, prenom, password);
+		return etudiant != null;
+	}
 
 	public String identificateur(String nom, String prenom) {
 		// TODO Auto-generated method stub
@@ -20,21 +26,28 @@ public class Selection_bdd {
 	}
 	
 	public Element getElement(String nom, String prenom) {
+
+		
 		xml fichier = null;
 		try {
 			xml v = new xml();
 			fichier = new xml(v.chemin + "/tp1.xml");
+			return fichier.get_element(nom, prenom);
 			
-			Element racine = fichier.racine;
-			List<Element> listEtudiant = racine.getChildren("etudiant");
-			Iterator<Element> i = listEtudiant.iterator();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+public Element getElement(String nom, String prenom, String password) {
+
+		xml fichier = null;
+		try {
+			xml v = new xml();
+			fichier = new xml(v.chemin + "/tp1.xml");
+			return fichier.get_element(nom, prenom, password);
 			
-			while (i.hasNext()) {
-				Element courant = (Element) i.next();
-				if (courant.getChild("nom").equals(nom) && courant.getChild("prenom").equals(prenom)){
-					return courant;
-				}
-			}
 		}catch(Exception e) {
 			System.out.println(e);
 		}

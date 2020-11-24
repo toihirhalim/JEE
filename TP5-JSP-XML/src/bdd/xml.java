@@ -2,6 +2,7 @@ package bdd;
 
 import java.io.FileOutputStream;
 import java.util.Iterator;
+import java.util.List;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -16,7 +17,7 @@ public class xml {
 	public static Document document;
 	public static Iterator j;
 	public static Element courant;
-	public String chemin = "C:\\Users\\\\Public\\";
+	public String chemin = "C:\\Users\\Public";
 	
 	public xml(String chemin1) throws Exception{
 		// TODO Auto-generated constructor stub
@@ -49,6 +50,41 @@ public class xml {
 		}catch(Exception e) {
 			System.out.println(e);
 		}
+	}
+	
+	public Element get_element(String nom, String prenom) {
+		List<Element> listEtudiants = racine.getChildren("etudiant");
+
+		Iterator<Element> i = listEtudiants.iterator();
+		
+		while (i.hasNext()) {
+			Element courant = (Element) i.next();
+			String Nom = courant.getChild("nom").getText();
+			String Prenom = courant.getChild("prenom").getText();
+			
+			if(Nom.equals(nom) && Prenom.equals(prenom)) {
+				return courant;
+			}
+		}
+		return null;
+	}
+	
+	public Element get_element(String nom, String prenom, String password) {
+		List<Element> listEtudiants = racine.getChildren("etudiant");
+
+		Iterator<Element> i = listEtudiants.iterator();
+		
+		while (i.hasNext()) {
+			Element courant = (Element) i.next();
+			String Nom = courant.getChild("nom").getText();
+			String Prenom = courant.getChild("prenom").getText();
+			String Password = courant.getChild("password").getText();
+			
+			if(Nom.equals(nom) && Prenom.equals(prenom) && Password.equals(password)) {
+				return courant;
+			}
+		}
+		return null;
 	}
  
 }

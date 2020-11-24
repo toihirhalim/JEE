@@ -36,24 +36,7 @@
 </head>
 <body>
 	<% 
-		/*session.invalidate();
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
-		String adresse = request.getParameter("adresse");
-		String password = request.getParameter("password");
-		
-		if(nom != null && prenom != null && adresse != null && password != null){
-			Random rd = new Random();
-			int id = rd.nextInt(10000);
-			Connexion cnx= new Connexion();
-			System.out.println(cnx.addEtudiant(id, nom, prenom, adresse, password));
-			
-			request.setAttribute("nom", null);
-			request.setAttribute("prenopm", null);
-			request.setAttribute("adresse", null);
-			request.setAttribute("password", null);
-			response.sendRedirect("index.html");
-		}*/
+		session.invalidate();
 	%>
 	<header>
 		<h1>Inscription page</h1>

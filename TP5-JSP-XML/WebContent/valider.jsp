@@ -6,8 +6,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+	div {
+		display: flex;
+		width: 80%;
+		justify-content: space-between;
+		padding: 20px;
+		margin: auto;
+	}
+</style>
 </head>
 <body>
+<div>
+	<a href="index.html">Acceuil</a>
+	<a href="utilisateur.jsp">Authentification</a>
+	<a href="inscription.jsp">Inscription</a>
+</div>
 	<jsp:useBean id="utilisateur" class="bdd.Personne" scope="session">
 		<jsp:setProperty name="utilisateur" property="*"/>
 			<table>
