@@ -1,10 +1,12 @@
 package Traitement;
 import hibernate.Professeur;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 public class TestMain {
 private Session session = null;
 private List professeurs = new ArrayList();

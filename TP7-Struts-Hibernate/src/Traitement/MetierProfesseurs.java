@@ -20,15 +20,13 @@ public class MetierProfesseurs {
 		Transaction tx = null;
 		session = HibernateUtil.currentSession();
 		tx = session.beginTransaction();
-		List tmpprofesseurs = session.createQuery("select o from
-		Professeur as o").list();
+		List tmpprofesseurs = session.createQuery("select o from Professeur as o").list();
 		for (Iterator iter = tmpprofesseurs.iterator();iter.hasNext();) {
 			professeurs.add((Professeur) iter.next());
 			for (int i=0;i<professeurs.size();i++){
 				Professeur per=(Professeur)professeurs.get(i);
 			}
-			System.out.println("Nom :"+per.getNom()+" Prenom
-			:"+per.getPrenom()+" Adreese :"+per.getAdresse());}
+			System.out.println("Nom :"+per.getNom()+" Prenom:"+per.getPrenom()+" Adreese :"+per.getAdresse());
 		}
 		tx.commit();
 		return (Professeur[]) professeurs.toArray(new
@@ -54,8 +52,7 @@ public class MetierProfesseurs {
 		List professeurs = new ArrayList();
 		boolean exist = false;
 		session = HibernateUtil.currentSession();
-		List tmp = session.createQuery("from
-		Professeur").list();
+		List tmp = session.createQuery("from Professeur").list();
 		for (Iterator iter = tmp.iterator(); iter.hasNext();) {
 			professeurs.add((Professeur) iter.next());
 		}
