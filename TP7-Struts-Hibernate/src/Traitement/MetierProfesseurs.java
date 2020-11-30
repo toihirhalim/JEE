@@ -21,16 +21,16 @@ public class MetierProfesseurs {
 		session = HibernateUtil.currentSession();
 		tx = session.beginTransaction();
 		List tmpprofesseurs = session.createQuery("select o from Professeur as o").list();
+		
 		for (Iterator iter = tmpprofesseurs.iterator();iter.hasNext();) {
 			professeurs.add((Professeur) iter.next());
 			for (int i=0;i<professeurs.size();i++){
 				Professeur per=(Professeur)professeurs.get(i);
-			}
 			System.out.println("Nom :"+per.getNom()+" Prenom:"+per.getPrenom()+" Adreese :"+per.getAdresse());
+			}
 		}
 		tx.commit();
-		return (Professeur[]) professeurs.toArray(new
-		Professeur[0]);
+		return (Professeur[]) professeurs.toArray(new Professeur[0]);
 	}
 	// Suppression d'un enregistrement
 	public void SupprimerProfesseur(Integer id) {
