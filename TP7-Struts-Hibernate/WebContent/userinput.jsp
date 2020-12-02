@@ -12,6 +12,7 @@ pageEncoding="ISO-8859-1"%>
 	<body>
 		<center>
 			<div>
+				<%/*
 				<h:form action="/userinput">
 					<table border="1">
 						<tr>
@@ -36,6 +37,32 @@ pageEncoding="ISO-8859-1"%>
 						</tr>
 					</table>
 				</h:form>
+				*/%>
+				
+				<form action="/userinput">
+					<table border="1">
+						<tr>
+							<td><strong>Nom :</strong></td>
+							<td><input type="text" name="nom" required></td>
+						</tr>
+						<tr>
+							<td><strong>Prenom :</strong></td>
+							<td><input type="text" name="prenom" required></td>
+						</tr>
+						<tr>
+							<td><strong>Email :</strong></td>
+							<td><input type="email" name="email" required></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<button>cancel</button>
+								<button type="submit">Ok</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+				
 			</div>
 		</center>
 	</body>
