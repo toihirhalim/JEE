@@ -13,11 +13,9 @@ import beans.UserinputForm;
 
 public class UserinputAction extends Action {
 
-	public ActionForward execute(
-			ActionMapping mapping,
-			ActionForm form,
-			HttpServletRequest request,
-			HttpServletResponse response) {
+	public ActionForward execute(ActionMapping mapping, ActionForm form, 
+			HttpServletRequest request, HttpServletResponse response) {
+		
 		UserinputForm userinputForm = (UserinputForm) form;
 		System.out.println(userinputForm.getNom());
 		System.out.println(userinputForm.getPrenom());

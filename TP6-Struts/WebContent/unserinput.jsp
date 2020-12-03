@@ -46,7 +46,7 @@
 	</h:form>
 	
 	<script type="text/javascript">
-		const inputs = document.getElementsByTagName("input");
+		const myCollection = document.getElementsByTagName("input");
 		
 		function clear(){
 			var i;
