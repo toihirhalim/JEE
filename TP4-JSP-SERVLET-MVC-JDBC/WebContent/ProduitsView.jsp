@@ -32,8 +32,8 @@
 			if(produits != null){
 				for(Produit produit : produits){
 					out.println("<tr>");
-					out.println("<td>"+produit.getId()+"</td>");;
-					out.println("<td>"+produit.getNom()+"</td>");;
+					out.println("<td>"+produit.getId()+"</td>");
+					out.println("<td>"+produit.getNom()+"</td>");
 					out.println("<td>"+produit.getPrix()+"</td>");
 					out.println("</tr>");
 				}
