@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,17 +46,22 @@ public class ProfesseurServlet extends HttpServlet {
 		
 		if(url.equals("afficherProfesseurs.do")) {
 			try {
-				request.setAttribute("professeurs", Connexion.getProfesseurs());
-			} catch (SQLException e) {
+				List<Professeur> profs = Connexion.getProfesseurs();
+				
+				request.setAttribute("professeurs", profs);
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 			request.getRequestDispatcher("afficheProfesseur.jsp").forward(request, response);
 		}else if(url.equals("editerProfesseurs.do")) {
 			try {
+				HttpSession session = request.getSession();
+				
 				if(prof != null) {
-					HttpSession session = request.getSession();
 					session.setAttribute("professeur", Connexion.getProfesseur(prof.getId()));
+				}else {
+					session.invalidate();
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
