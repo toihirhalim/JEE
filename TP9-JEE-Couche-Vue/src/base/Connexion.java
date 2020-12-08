@@ -118,4 +118,11 @@ public class Connexion {
 		return getProfesseur(prof.getId());
 	}
 
+	public static void deleteProfesseur(Professeur prof) throws SQLException {
+		String query = "DELETE FROM professeur where id=?";
+		PreparedStatement pstmt = connection.prepareStatement(query);
+		pstmt.setLong(1, prof.getId());
+		pstmt.executeUpdate();
+	}
+
 }

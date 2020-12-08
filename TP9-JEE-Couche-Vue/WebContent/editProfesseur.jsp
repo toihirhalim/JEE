@@ -34,7 +34,12 @@
 			select = prof.getSelect();
 		}
 	%>
-	<form action="EditProfesseur" method="POST" class="center">
+	<br>
+	<div class="center">
+		<h2>Editer / Ajouter Professeur</h2>
+	</div>
+	<br>
+	<form action="EditProfesseur.do" method="POST" class="center">
 		<table>
 			<tr>
 				<td>Id : </td>
@@ -77,5 +82,11 @@
 			<tr>
 		</table>
 	</form>
+	<br>
+	<div class="center">
+		<a href="afficherProfesseurs.do">
+			<button>Afficher les Professeurs</button>
+		</a>
+	</div>
 </body>
 </html>

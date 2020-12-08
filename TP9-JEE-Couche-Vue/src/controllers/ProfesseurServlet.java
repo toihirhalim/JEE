@@ -53,14 +53,20 @@ public class ProfesseurServlet extends HttpServlet {
 			request.getRequestDispatcher("afficheProfesseur.jsp").forward(request, response);
 		}else if(url.equals("editerProfesseurs.do")) {
 			try {
-				HttpSession session = request.getSession();
-				session.setAttribute("professeur", Connexion.getProfesseur(prof.getId()));
+				if(prof != null) {
+					HttpSession session = request.getSession();
+					session.setAttribute("professeur", Connexion.getProfesseur(prof.getId()));
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getRequestDispatcher("editProfesseur.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/editProfesseur.jsp").forward(request, response);
 		}else if(url.equals("supprimerProfesseurs.do")) {
+			try {
+				Connexion.deleteProfesseur(prof);
+				request.setAttribute("professeurs", Connexion.getProfesseurs());
+			}catch(Exception e) {}
 			request.getRequestDispatcher("afficheProfesseur.jsp").forward(request, response);
 		}else {
 			response.sendRedirect("index.jsp");
@@ -72,7 +78,28 @@ public class ProfesseurServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
+		String adresse = request.getParameter("adresse");
+		String select = request.getParameter("select");
+		HttpSession session = request.getSession();
+		Professeur prof = (Professeur) session.getAttribute("professeur");
+		System.out.println(prof);
+		try {
+			if(prof != null) {
+				prof = Connexion.getProfesseur(nom, prenom, adresse);
+			}
+		
+			if(prof != null) {
+				Connexion.updateProfesseur(prof, nom, prenom, adresse, select);
+			}else {
+				Connexion.insertProfesseur(nom, prenom, adresse, select);
+			}
+		}catch(Exception e) {}
+		
+		response.sendRedirect("afficherProfesseurs.do");
+		
+		
 	}
 
 }
