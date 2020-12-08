@@ -124,5 +124,5 @@ public class Connexion {
 		pstmt.setLong(1, prof.getId());
 		pstmt.executeUpdate();
 	}
-
+	
 }

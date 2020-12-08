@@ -84,7 +84,7 @@ public class ProfesseurServlet extends HttpServlet {
 		String select = request.getParameter("select");
 		HttpSession session = request.getSession();
 		Professeur prof = (Professeur) session.getAttribute("professeur");
-		System.out.println(prof);
+		
 		try {
 			if(prof != null) {
 				prof = Connexion.getProfesseur(nom, prenom, adresse);
