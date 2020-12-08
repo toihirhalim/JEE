@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import base.Connexion;
+import beans.Professeur;
 
 /**
  * Servlet implementation class ProfesseurServlet
@@ -34,6 +36,13 @@ public class ProfesseurServlet extends HttpServlet {
 		String url = request.getRequestURL().toString();
 		url = url.substring(url.lastIndexOf("/") + 1, url.length());
 		
+		Professeur prof = null;
+		try {
+			String Id = request.getParameter("id");
+			int id = Integer.parseInt(Id);
+			prof = Connexion.getProfesseur(id);
+		}catch(Exception e) {}
+		
 		if(url.equals("afficherProfesseurs.do")) {
 			try {
 				request.setAttribute("professeurs", Connexion.getProfesseurs());
@@ -43,11 +52,18 @@ public class ProfesseurServlet extends HttpServlet {
 			}
 			request.getRequestDispatcher("afficheProfesseur.jsp").forward(request, response);
 		}else if(url.equals("editerProfesseurs.do")) {
-			
+			try {
+				HttpSession session = request.getSession();
+				session.setAttribute("professeur", Connexion.getProfesseur(prof.getId()));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("editProfesseur.jsp").forward(request, response);
 		}else if(url.equals("supprimerProfesseurs.do")) {
-			
+			request.getRequestDispatcher("afficheProfesseur.jsp").forward(request, response);
 		}else {
-			//response.sendRedirect("index.jsp");
+			response.sendRedirect("index.jsp");
 		}
 	}
 

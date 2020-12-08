@@ -9,19 +9,25 @@
 <meta charset="ISO-8859-1">
 <title>Professeurs</title>
 <style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
 	table, th, td {
 	  border: 1px solid black;
 	}
 	.center{
 		display: flex;
-		flex-direction: column;
-		width: 100%;
 		justify-content: center;
-		background-color: red;
 	}
 </style>
 </head>
 <body>
+	<br>
+	<div class="center">
+		<h2>liste des Professeurs</h2>
+	</div>
+	<br>
 	<div class="center">
 		<table>
 			<tr>
@@ -53,7 +59,9 @@
 				
 			%>
 		</table>
-		<br>
+	</div>
+	<br>
+	<div class="center">
 		<a href="editerProfesseurs.do">
 			<button>Ajouter Professeur dans la liste</button>
 		</a>
