@@ -25,7 +25,7 @@ CommandLineRunner {
 	//createPersons();
 		//getPersonByIds();
 		//deletePersonEntity();
-		updatePersonEmailById();
+		//updatePersonEmailById();
 	}
 	private void createPersons() {
 	// TODO Auto-generated method stub
