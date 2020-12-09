@@ -1,5 +1,10 @@
 package org.lsi.book.ticket.app.dao;
 
-public class TicketBookingDao {
+import org.lsi.book.ticket.app.entities.Ticket;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class TicketBookingDao extends CrudRepository<Ticket, Integer> {
 
 }
