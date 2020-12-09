@@ -22,4 +22,14 @@ public class PeopleManagementService {
 	public Iterable<Person> getPersonByIds(List<Integer> ids) {
 		return peopleManagementDao.findAllById(ids);
 		}
+	public void deletePersonEntity(Person person) {
+		peopleManagementDao.delete(person);
+		}
+	public void updatePersonEmailById(int id, String newEmail) {
+		Person person = peopleManagementDao.findById(id).orElse(null);
+		if(id==person.getId()){
+		person.setEmail(newEmail);
+		}
+		peopleManagementDao.save(person);
+		}
 }

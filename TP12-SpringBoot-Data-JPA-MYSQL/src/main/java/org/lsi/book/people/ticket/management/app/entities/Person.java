@@ -51,4 +51,11 @@ public class Person {
 	public Date getCreationDate() {
 	return creationDate;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+		}
+	public void setEmail(String email) {
+		this.email = email;
+		}
 }

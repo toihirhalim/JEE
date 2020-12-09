@@ -22,8 +22,10 @@ CommandLineRunner {
 	public void run(String... args) throws Exception {
 	// TODO Auto-generated method stub
 	//createPerson();
-	createPersons();
+	//createPersons();
 		//getPersonByIds();
+		//deletePersonEntity();
+		updatePersonEmailById();
 	}
 	private void createPersons() {
 	// TODO Auto-generated method stub
@@ -45,12 +47,19 @@ CommandLineRunner {
 	private void getPersonByIds() {
 		// TODO Auto-generated method stub
 		List<Integer> ids = new ArrayList<>();
+		ids.add(1);
 		ids.add(2);
-		ids.add(3);
 		ids.add(20);
 		Iterable<Person> personList = peopleMangementService.getPersonByIds(ids);
 		// Java 8
 		personList.forEach(System.out::println);
 		}
-	
+	private void deletePersonEntity() {
+		Person person = new Person();
+		person.setId(2);
+		peopleMangementService.deletePersonEntity(person);
+		}
+	private void updatePersonEmailById() {
+		peopleMangementService.updatePersonEmailById(1,"amine_alami2@Gmail.com");
+		}
 }
