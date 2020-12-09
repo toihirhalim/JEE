@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TicketBookingDao extends CrudRepository<Ticket, Integer> {
+public interface TicketBookingDao extends CrudRepository<Ticket, Integer> {
 
 }

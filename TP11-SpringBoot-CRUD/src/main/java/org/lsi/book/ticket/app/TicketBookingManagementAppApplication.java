@@ -1,7 +1,6 @@
 package org.lsi.book.ticket.app;
 
 import java.util.Date;
-import org.apache.catalina.core.ApplicationContext;
 import org.lsi.book.ticket.app.entities.Ticket;
 import org.lsi.book.ticket.app.service.TicketBookingService;
 import org.springframework.boot.SpringApplication;
