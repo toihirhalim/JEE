@@ -2,6 +2,11 @@ package org.lsi.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="employe")
 public class Employe {
 	private long codeEmploye;
 	private String nomEmploye;

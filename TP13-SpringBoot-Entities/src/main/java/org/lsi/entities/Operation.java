@@ -2,6 +2,11 @@ package org.lsi.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="operation")
 public class Operation {
 	private long numeroOperation;
 	private Date dateOperation;

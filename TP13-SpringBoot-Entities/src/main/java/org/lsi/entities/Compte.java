@@ -3,10 +3,20 @@ package org.lsi.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="compte")
 public class Compte {
-	
+	@Id
+	@Column(name="nom_compte",length=60,nullable=false)
 	private String codeCompte;
+	@Column(name="creation_date")
 	private Date dateCreaction;
+	@Column(name="solde")
 	private double solde;
 	private Client client;
 	private List<Operation> operations;
