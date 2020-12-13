@@ -8,13 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="compte")
 public class Compte {
 	@Id
-	@Column(name="nom_compte",length=60,nullable=false)
+	@Column(name="nom_cpte",length=60,nullable=false)
 	private String codeCompte;
 	@Column(name="creation_date")
 	private Date dateCreaction;
@@ -23,6 +24,7 @@ public class Compte {
 	@ManyToOne
     @JoinColumn(name="code_cli")
 	private Client client;
+	@OneToMany(mappedBy = "compte")
 	private List<Operation> operations;
 	
 	public Compte() {
