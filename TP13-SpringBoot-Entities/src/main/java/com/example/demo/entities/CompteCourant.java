@@ -2,8 +2,14 @@ package com.example.demo.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+//@Entity
+@Table(name="compte")
 public class CompteCourant extends Compte {
-	
+	@Column(name="dec")
 	private double decouvert;
 
 	public CompteCourant() {
