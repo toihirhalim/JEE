@@ -6,10 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-//@Entity
+@Entity
 @Table(name="compte")
 public class CompteCourant extends Compte {
-	@Column(name="dec")
+	@Column
 	private double decouvert;
 
 	public CompteCourant() {

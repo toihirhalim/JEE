@@ -6,10 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-//@Entity
+@Entity
 @Table(name="compte")
 public class CompteEpargne extends Compte {
-	@Column(name="taux")
+	@Column
 	private double taux;
 	
 	public CompteEpargne() {
