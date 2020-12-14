@@ -2,13 +2,16 @@ package com.example.demo.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,8 +25,9 @@ public class Employe {
 	private String nomEmploye;
 	@OneToMany(mappedBy = "employe")
 	private List<Operation> operations;
-	
-	//private Employe employeSup;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "emp_sup", referencedColumnName = "num_emp")
+	private Employe employeSup;
 	
 	@ManyToMany(mappedBy = "employes")
 	private List<Groupe> groups;
@@ -46,7 +50,7 @@ public class Employe {
 	public void setNomEmploye(String nomEmploye) {
 		this.nomEmploye = nomEmploye;
 	}
-	/*public Employe getEmployeSup() {
+	public Employe getEmployeSup() {
 		return employeSup;
 	}
 	public void setEmployeSup(Employe employeSup) {
@@ -57,7 +61,7 @@ public class Employe {
 	}
 	public void setGroups(List<Groupe> groups) {
 		this.groups = groups;
-	}*/
+	}
 	public List<Operation> getOperations() {
 		return operations;
 	}
