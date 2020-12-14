@@ -15,5 +15,21 @@ public class ClientService {
 		// TODO Auto-generated method stub
 		return clientDao.save(client);
 	}
+
+	public Client getClientById(Long clientId) {
+		// TODO Auto-generated method stub
+		return clientDao.findById(clientId).orElse(null);
+	}
+
+
+	public Iterable<Client> getAllBookedClients() {
+		// TODO Auto-generated method stub
+		return clientDao.findAll();
+	}
+
+	public void deleteClient(Long clientId) {
+		// TODO Auto-generated method stub
+		clientDao.deleteById(clientId);
+	}
 	
 }
