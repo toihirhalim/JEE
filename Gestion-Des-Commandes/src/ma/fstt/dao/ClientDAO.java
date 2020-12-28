@@ -10,6 +10,7 @@ import java.util.List;
 
 import ma.fstt.entities.Client;
 import ma.fstt.service.ClientRepository;
+import ma.fstt.tools.ConnectionManager;
 
 public class ClientDAO implements ClientRepository {
 	
@@ -19,16 +20,16 @@ public class ClientDAO implements ClientRepository {
 	protected  ResultSet resultSet ;
 
 	
-	public ClientDAO() {
+	public ClientDAO() throws ClassNotFoundException, SQLException {
 		super();
-		//connection = ConnectionManager.getConnection() ;
+		connection = ConnectionManager.getConnection() ;
 	}
 	
 
 	@Override
 	public Client trouverById(int id) throws SQLException  {
 		// TODO Auto-generated method stub
-		String sql = "select *  from client  where id = ?";
+		String sql = "select *  from client  where idClient = ?";
 		
 		Client client = null;
 		
@@ -84,7 +85,7 @@ public class ClientDAO implements ClientRepository {
 	@Override
 	public void updateClient(Client client) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "update  client set  nom = ?  where id = ?";
+		String sql = "update  client set  nom = ?  where idClient = ?";
 		
 		this.preparedStatement = this.connection.prepareStatement(sql);
 		
@@ -97,7 +98,7 @@ public class ClientDAO implements ClientRepository {
 	@Override
 	public void deleteClient(Client client) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "delete  from client  where id = ?";
+		String sql = "delete  from client  where idClient = ?";
 		
 		this.preparedStatement = this.connection.prepareStatement(sql);
 		
