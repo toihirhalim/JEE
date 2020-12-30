@@ -19,16 +19,16 @@ import ma.fstt.entities.Commande;
 import ma.fstt.entities.LigneCommande;
 
 /**
- * Servlet implementation class Commandes
+ * Servlet implementation class ListCommandes
  */
 @WebServlet("/commandes")
-public class Commandes extends HttpServlet {
+public class ListCommandes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Commandes() {
+    public ListCommandes() {
         super();
         // TODO Auto-generated constructor stub
     }
