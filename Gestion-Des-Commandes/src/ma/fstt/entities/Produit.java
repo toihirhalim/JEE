@@ -1,9 +1,9 @@
 package ma.fstt.entities;
 
 public class Produit {
-	int id;
-	String libele;
-	int prix;
+	private int id;
+	private String libele;
+	private int prix;
 	
 	
 	public Produit() {

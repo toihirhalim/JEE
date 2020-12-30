@@ -1,12 +1,14 @@
 package ma.fstt.entities;
 
 public class Client {
+	
+	private int id;
+	private String nom;
+	
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", nom=" + nom + "]";
 	}
-	int id;
-	String nom;
 	public Client() {
 		super();
 		// TODO Auto-generated constructor stub
