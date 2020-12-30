@@ -41,7 +41,7 @@ public class CommandeDAO implements CommandeRepository{
 		while(this.resultSet.next()) {
 			
 			
-			commande = new Commande(this.resultSet.getInt(1), this.resultSet.getInt(2), this.resultSet.getDate(2));
+			commande = new Commande(this.resultSet.getInt(1), this.resultSet.getInt(2), null /*this.resultSet.getDate(2)*/);
 			
 			break ;
 			
@@ -53,12 +53,14 @@ public class CommandeDAO implements CommandeRepository{
 	@Override
 	public void ajouterCommande(Commande commande) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "insert into Commande (idClient, date) values (?, ?)";
+
+		//String sql = "insert into Commande (idClient, date) values (?, ?)";
+		String sql = "insert into Commande (idClient) values (?)";
 		
 		this.preparedStatement = this.connection.prepareStatement(sql);
 
 		this.preparedStatement.setInt(1, commande.getIdClient());
-		this.preparedStatement.setDate(2, commande.getDate());
+		//this.preparedStatement.setDate(2, commande.getDate());
 		
 		this.preparedStatement.execute();
 	}
@@ -75,7 +77,7 @@ public class CommandeDAO implements CommandeRepository{
 		
 		while(this.resultSet.next()) {
 			
-			list.add(new Commande(this.resultSet.getInt(1), this.resultSet.getInt(2), this.resultSet.getDate(2)));
+			list.add(new Commande(this.resultSet.getInt(1), this.resultSet.getInt(2), null /*this.resultSet.getDate(2)*/));
 			
 		}
 		
@@ -98,7 +100,7 @@ public class CommandeDAO implements CommandeRepository{
 		
 		while(this.resultSet.next()) {
 			
-			list.add(new Commande(this.resultSet.getInt(1), this.resultSet.getInt(2), this.resultSet.getDate(2)));
+			list.add(new Commande(this.resultSet.getInt(1), this.resultSet.getInt(2), null /*this.resultSet.getDate(2)*/));
 			
 		}
 		

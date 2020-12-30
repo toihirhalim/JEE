@@ -13,21 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import ma.fstt.dao.ClientDAO;
 import ma.fstt.dao.CommandeDAO;
 import ma.fstt.dao.LigneCommandeDAO;
+import ma.fstt.dao.ProduitDAO;
 import ma.fstt.entities.Client;
 import ma.fstt.entities.Commande;
-import ma.fstt.entities.Produit;
+import ma.fstt.entities.LigneCommande;
 
 /**
- * Servlet implementation class ListCommandes
+ * Servlet implementation class Commandes
  */
-@WebServlet("/listCommandes")
-public class ListCommandes extends HttpServlet {
+@WebServlet("/commandes")
+public class Commandes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListCommandes() {
+    public Commandes() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,6 +49,7 @@ public class ListCommandes extends HttpServlet {
 				int id = Integer.parseInt(idClient);
 				
 				Client client = clientDao.trouverById(id);
+				 
 				commandes = commandeDao.listCommande(client);
 				
 				for(Commande commande : commandes) {
@@ -56,21 +58,24 @@ public class ListCommandes extends HttpServlet {
 				
 			}else {
 				commandes = commandeDao.listCommande();
+
 				for(Commande commande : commandes) {
-					commande.setClient(clientDao.trouverById(commande.getId()));
+					commande.setClient(clientDao.trouverById(commande.getIdClient()));
 				}
 			}
 				
+			LigneCommandeDAO lignecommandeDao = new LigneCommandeDAO();
+			ProduitDAO produitDAO = new ProduitDAO();
 			
-			
-
-				/*LigneCommandeDAO lignecommandeDao = new LigneCommandeDAO();
-				Produit produit = new Produit();
-
-				request.setAttribute("commandes", commandeDao.listCommande(client));
-				*/
-				request.setAttribute("commandes", commandeDao.listCommande());
-			
+			for(Commande commande : commandes) {
+				commande.setLigneCommandes(lignecommandeDao.listLigneCommande(commande));
+				
+				for(LigneCommande ligneCommande : commande.getLigneCommandes()) {
+					ligneCommande.setProduit(produitDAO.trouverById(ligneCommande.getIdProduit()));
+				}
+				
+				commande.calculatePrixTotal();
+			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

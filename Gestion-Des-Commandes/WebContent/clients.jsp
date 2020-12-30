@@ -40,7 +40,7 @@
 			
 			<td><%=clients.get(i).getId() %> </td>
 			<td> <%=clients.get(i).getNom() %> </td>
-			<td> <a href="commandesClient?id=<%=clients.get(i).getId() %>" >  Commandes </a></td>
+			<td> <a href="commandes?idClient=<%=clients.get(i).getId() %>" >  Commandes </a></td>
 			<td> <a href="deleteClient?id=<%=clients.get(i).getId() %>" >  delete </a> </td>
 			<td> <a href="updateClient?id=<%=clients.get(i).getId() %>" >  update </a>  </td>
 			

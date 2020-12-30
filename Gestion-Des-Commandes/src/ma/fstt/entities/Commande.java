@@ -1,6 +1,7 @@
 package ma.fstt.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Commande {
@@ -11,7 +12,7 @@ public class Commande {
 	// entity relationships
 	private Client client;
 	private List<LigneCommande> ligneCommandes;
-	private int prixTotal;
+	private int prixTotal = 0;
 	
 	public Commande() {
 		super();
