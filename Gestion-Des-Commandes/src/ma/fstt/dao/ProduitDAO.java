@@ -102,6 +102,7 @@ public class ProduitDAO implements ProduitRepository{
 	@Override
 	public void deleteProduit(Produit produit) throws SQLException {
 		// TODO Auto-generated method stub
+		
 		String sql = "delete  from produit  where idProduit = ?";
 		
 		this.preparedStatement = this.connection.prepareStatement(sql);

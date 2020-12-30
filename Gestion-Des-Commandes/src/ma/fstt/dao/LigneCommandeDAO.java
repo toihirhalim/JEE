@@ -8,7 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import ma.fstt.entities.Commande;
 import ma.fstt.entities.LigneCommande;
+import ma.fstt.entities.Produit;
 import ma.fstt.service.LigneCommandeRepository;
 import ma.fstt.tools.ConnectionManager;
 
@@ -79,6 +81,28 @@ public class LigneCommandeDAO implements LigneCommandeRepository {
 		return list;
 	}
 	@Override
+	public List<LigneCommande> listLigneCommande(Commande commande) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		String sql = "select *  from ligne_commande where idCommande = ?";
+		
+		List<LigneCommande> list = new ArrayList() ;
+		
+		this.preparedStatement = this.connection.prepareStatement(sql);
+		
+		this.preparedStatement.setInt(1,commande.getId());
+		
+		this.resultSet = this.preparedStatement.executeQuery();
+		
+		while(this.resultSet.next()) {
+			
+			list.add(new LigneCommande(this.resultSet.getInt(1), this.resultSet.getInt(2), this.resultSet.getInt(3), this.resultSet.getInt(4)));
+			
+		}
+		
+		return list;
+	}
+	@Override
 	public void updateLigneCommande(LigneCommande ligneCommande) throws SQLException {
 		// TODO Auto-generated method stub
 		String sql = "update  ligne_commande set  idCommande = ?, idProduit = ?, qtte =? where idLigne = ?";
@@ -103,6 +127,29 @@ public class LigneCommandeDAO implements LigneCommandeRepository {
 		
 		this.preparedStatement.execute();
 	}
+	@Override
+	public void deleteLigneCommande(Produit produit) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "delete  from ligne_commande  where idProduit = ?";
+		
+		this.preparedStatement = this.connection.prepareStatement(sql);
+		
+		this.preparedStatement.setInt(1, produit.getId());
+		
+		this.preparedStatement.execute();
+	}
+	@Override
+	public void deleteLigneCommande(Commande commande) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "delete  from ligne_commande  where idCommande = ?";
+		
+		this.preparedStatement = this.connection.prepareStatement(sql);
+		
+		this.preparedStatement.setInt(1, commande.getId());
+		
+		this.preparedStatement.execute();
+	}
+	
 	
 	
 }

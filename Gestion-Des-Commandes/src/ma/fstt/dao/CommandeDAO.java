@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import ma.fstt.entities.Client;
 import ma.fstt.entities.Commande;
 import ma.fstt.service.CommandeRepository;
 import ma.fstt.tools.ConnectionManager;
@@ -80,6 +81,29 @@ public class CommandeDAO implements CommandeRepository{
 		
 		return list;
 	}
+	
+	@Override
+	public List<Commande> listCommande(Client client) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "select *  from commande  where idClient = ?";
+		
+		
+		this.preparedStatement = this.connection.prepareStatement(sql);
+		
+		this.preparedStatement.setInt(1,client.getId());
+		
+		this.resultSet = this.preparedStatement.executeQuery();
+		
+		List<Commande> list = new ArrayList() ;
+		
+		while(this.resultSet.next()) {
+			
+			list.add(new Commande(this.resultSet.getInt(1), this.resultSet.getInt(2), this.resultSet.getDate(2)));
+			
+		}
+		
+		return list;
+	}
 
 	@Override
 	public void updateCommande(Commande commande) throws SQLException {
@@ -106,5 +130,7 @@ public class CommandeDAO implements CommandeRepository{
 		
 		this.preparedStatement.execute();
 	}
+
+	
 
 }

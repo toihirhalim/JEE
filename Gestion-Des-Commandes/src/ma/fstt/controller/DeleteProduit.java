@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ma.fstt.dao.LigneCommandeDAO;
 import ma.fstt.dao.ProduitDAO;
+import ma.fstt.entities.Produit;
 
 /**
  * Servlet implementation class DeleteProduit
@@ -35,10 +37,15 @@ public class DeleteProduit extends HttpServlet {
 			ProduitDAO produitDao = new ProduitDAO();
 			int id = Integer.parseInt(request.getParameter("id"));
 			
-			/*
-			 * delete all lignesCommandes that contain tha same produit
-			 */
-			produitDao.deleteProduit(produitDao.trouverById(id));
+			Produit produit = produitDao.trouverById(id);
+			
+			if(produit != null) {
+				LigneCommandeDAO ligneCommandeDao = new LigneCommandeDAO();
+				
+				ligneCommandeDao.deleteLigneCommande(produit);
+				
+				produitDao.deleteProduit(produit);
+			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
