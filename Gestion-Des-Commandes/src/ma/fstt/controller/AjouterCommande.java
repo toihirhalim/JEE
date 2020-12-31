@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ma.fstt.dao.ClientDAO;
+import ma.fstt.dao.CommandeDAO;
+import ma.fstt.dao.LigneCommandeDAO;
+import ma.fstt.dao.ProduitDAO;
 import ma.fstt.entities.Client;
+import ma.fstt.entities.Commande;
+import ma.fstt.entities.LigneCommande;
 
 /**
  * Servlet implementation class AjouterCommande
@@ -33,18 +38,38 @@ public class AjouterCommande extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
+			ClientDAO clientDao = new ClientDAO();
 			//String idCommande = request.getParameter("idClient");
-			
-			String idClient = request.getParameter("idClient");
-			
-			if(idClient != null) {
-
-				ClientDAO clientDao = new ClientDAO();
-				int id = Integer.parseInt(idClient);
+			String idCommande = request.getParameter("idCommande");
+			if(idCommande != null) {
+				int id = Integer.parseInt(idCommande);
+				CommandeDAO commandeDao = new CommandeDAO();
+				LigneCommandeDAO lignecommandeDao = new LigneCommandeDAO();
+				ProduitDAO produitDAO = new ProduitDAO();
 				
-				Client client = clientDao.trouverById(id);
-				request.setAttribute("client", client);
+				Commande commande = commandeDao.trouverById(id);
+				commande.setClient(clientDao.trouverById(commande.getIdClient()));
+				
+				commande.setLigneCommandes(lignecommandeDao.listLigneCommande(commande));
+				
+				for(LigneCommande ligneCommande : commande.getLigneCommandes()) {
+					ligneCommande.setProduit(produitDAO.trouverById(ligneCommande.getIdProduit()));
+				}
+				
+				commande.calculatePrixTotal();
+				
+			}else {
+				String idClient = request.getParameter("idClient");
+				
+				if(idClient != null) {
+
+					int id = Integer.parseInt(idClient);
+					
+					Client client = clientDao.trouverById(id);
+					request.setAttribute("client", client);
+				}
 			}
+			
 			
 			
 		} catch (ClassNotFoundException | SQLException e) {

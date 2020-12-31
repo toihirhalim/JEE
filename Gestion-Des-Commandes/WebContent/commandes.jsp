@@ -28,7 +28,7 @@
 	<% 
 		String urlClientId = "";
 		Client client = (Client)request.getAttribute("client");
-		if(client != null) urlClientId = "&idClient=" + client.getId();
+		if(client != null) urlClientId = "?idClient=" + client.getId();
 	%>
 	
 	<div class="center">

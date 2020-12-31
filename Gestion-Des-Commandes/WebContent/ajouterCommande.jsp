@@ -28,8 +28,7 @@
 <%
 	ArrayList<LigneCommande> lignecommande = new ArrayList();
 	String idClient = "";
-	Client client = (Client)request.getAttribute("client");
-	if(client != null) idClient = "&idClient=" + client.getId();
+	
 	
 	String idCommande = "0";
 	String prixTotal = "0";
@@ -37,12 +36,19 @@
 	if(commande != null) {
 		idCommande = "" + commande.getId();
 		prixTotal = "" + commande.getPrixTotal();
+		idClient = "" + commande.getClient().getId();
 		lignecommande = (ArrayList<LigneCommande>) commande.getLigneCommandes();
 	}
 	
+	if(idClient.equals("")){
+		Client client = (Client)request.getAttribute("client");
+		if(client != null) idClient = "" + client.getId();
+	}
+	
 %>
+
 	<div>
-		<form action="ajouterProduit"  method="POST">
+		<form action="ajouterCommande"  method="POST">
 			<div class="center">
 				<table>
 					<tr>
@@ -52,7 +58,7 @@
 						</td>
 						<td>client Id </td>
 						<td>
-							<input type="number" name="idClient" id="idClient" required/>
+							<input type="number" name="idClient" id="idClient" value="<%= idClient %>" required/>
 						</td>
 					</tr>
 					
