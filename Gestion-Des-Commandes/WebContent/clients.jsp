@@ -19,11 +19,25 @@
 	table, th, td {
 	  border: 1px solid black;
 	}
+	header {
+		display: flex;
+		justify-content: space-around;
+	}
 </style>
 </head>
 <body>
 	<%  ArrayList<Client> clients =   (ArrayList<Client>)request.getAttribute("clients"); %>
 	<% if(clients == null) clients = new ArrayList(); %>
+	
+	<header>
+		<a href="">Acceuil</a>
+		<a href="produits">Produits</a>
+		<a href="commandes">Commandes</a>
+	</header>
+	
+	<div class="center">
+		<h1>list Clients</h1>
+	</div>
 	
 	<div class="center">
 	

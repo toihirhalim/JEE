@@ -22,6 +22,10 @@
 	table, th, td {
 	  border: 1px solid black;
 	}
+	header {
+		display: flex;
+		justify-content: space-around;
+	}
 </style>
 </head>
 <body>
@@ -29,7 +33,7 @@
 	ArrayList<LigneCommande> lignecommande = new ArrayList();
 	String idClient = "";
 	
-	
+	String commandLink = "";
 	String idCommande = "0";
 	String prixTotal = "0";
 	Commande commande = (Commande)request.getAttribute("commande");
@@ -37,16 +41,31 @@
 		idCommande = "" + commande.getId();
 		prixTotal = "" + commande.getPrixTotal();
 		idClient = "" + commande.getClient().getId();
+		commandLink = "?idClient=" + commande.getClient().getId();
 		lignecommande = (ArrayList<LigneCommande>) commande.getLigneCommandes();
+		
 	}
 	
 	if(idClient.equals("")){
+		
 		Client client = (Client)request.getAttribute("client");
-		if(client != null) idClient = "" + client.getId();
+		if(client != null) {
+			idClient = "" + client.getId();
+			commandLink = "?idClient=" + client.getId();
+		}
 	}
 	
 %>
-<br><br>
+	<header>
+		<a href="">Acceuil</a>
+		<a href="produits">Produits</a>
+		<a href="clients">Clients</a>
+		<a href="commandes">Commandes</a>
+	</header>
+	
+	<div class="center">
+		<h1>Ajouter / Update Commande</h1>
+	</div>
 	<div>
 		<form action="ajouterCommande"  method="POST">
 			<div class="center">
@@ -82,7 +101,10 @@
 			</div>
 			<br><br>
 			<div class="center">
-				<button type="submit">Add</button>
+				<button type="submit">Add Produit</button>
+				<a href="commandes<%= commandLink %>" style="padding-left: 10px;">
+					<button type="button">Finish All</button>
+				</a>
 			</div>
 			<br><br>
 			<div class="center">

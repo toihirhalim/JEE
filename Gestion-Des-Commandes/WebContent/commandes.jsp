@@ -20,6 +20,10 @@
 	table, th, td {
 	  border: 1px solid black;
 	}
+	header {
+		display: flex;
+		justify-content: space-around;
+	}
 </style>
 </head>
 <body>
@@ -27,9 +31,23 @@
 	<% if(commandes == null) commandes = new ArrayList(); %>
 	<% 
 		String urlClientId = "";
+		String nomClient = "";
 		Client client = (Client)request.getAttribute("client");
-		if(client != null) urlClientId = "?idClient=" + client.getId();
+		if(client != null){ 
+			urlClientId = "?idClient=" + client.getId();
+			nomClient = " Client id = " + client.getId() + ", nom = " + client.getNom();
+		}
 	%>
+	
+	<header>
+		<a href="">Acceuil</a>
+		<a href="produits">Produits</a>
+		<a href="commandes">Commandes</a>
+	</header>
+	
+	<div class="center">
+		<h1>list Commandes <%= nomClient %></h1>
+	</div>
 	
 	<div class="center">
 	

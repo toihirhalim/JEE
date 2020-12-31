@@ -51,7 +51,6 @@ public class AjouterCommande extends HttpServlet {
 				
 				Commande commande = commandeDao.trouverById(id);
 
-				System.out.println(commande);
 				commande.setClient(clientDao.trouverById(commande.getIdClient()));
 				
 				commande.setLigneCommandes(lignecommandeDao.listLigneCommande(commande));
@@ -127,9 +126,13 @@ public class AjouterCommande extends HttpServlet {
 					
 					if(ligneCommande != null) {
 						ligneCommande.setQtte(ligneCommande.getQtte() + qtte);
+						if(ligneCommande.getQtte() == 0) {
+							ligneCommandeDAO.deleteLigneCommande(ligneCommande);
+						}else {
+							ligneCommandeDAO.updateLigneCommande(ligneCommande);
+						}
 						
-						ligneCommandeDAO.updateLigneCommande(ligneCommande);
-					}else {
+					}else if(qtte > 0){
 						ligneCommande = new LigneCommande(0, commande.getId(), produit.getId(), qtte);
 						ligneCommandeDAO.ajouterLigneCommande(ligneCommande);
 					}

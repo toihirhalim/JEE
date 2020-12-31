@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="clients">Clients</a> <br>
-	<a href="produits">Produits</a> <br>
-	<a href="commandes">Commandes</a> <br>
+	<br> <a href="clients">Clients</a> <br>
+	<br> <a href="produits">Produits</a> <br>
+	<br> <a href="commandes">Commandes</a> <br>
 </body>
 </html>

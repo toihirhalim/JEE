@@ -14,6 +14,10 @@
 	table, th, td {
 	  border: 1px solid black;
 	}
+	header {
+		display: flex;
+		justify-content: space-around;
+	}
 </style>
 </head>
 <body>
@@ -21,6 +25,16 @@
 	Client client = (Client) request.getAttribute("client");
 	if(client == null) response.sendRedirect("clients");
 %>
+	<header>
+		<a href="">Acceuil</a>
+		<a href="produits">Produits</a>
+		<a href="clients">Clients</a>
+		<a href="commandes">Commandes</a>
+	</header>
+	
+	<div class="center">
+		<h1>Update Client</h1>
+	</div>
 	<div>
 		<form action="updateClient"  method="POST">
 			<div class="center">

@@ -13,9 +13,24 @@
 	table, th, td {
 	  border: 1px solid black;
 	}
+	header {
+		display: flex;
+		justify-content: space-around;
+	}
 </style>
 </head>
 <body>
+
+	<header>
+		<a href="">Acceuil</a>
+		<a href="produits">Produits</a>
+		<a href="clients">Clients</a>
+		<a href="commandes">Commandes</a>
+	</header>
+	
+	<div class="center">
+		<h1>Ajouter Client</h1>
+	</div>
 	<div>
 		<form action="ajouterClient"  method="POST">
 			<div class="center">

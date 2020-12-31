@@ -67,7 +67,7 @@ public class Commande {
 		
 		for(LigneCommande ligneCommande: ligneCommandes) {
 			
-			prix += ligneCommande.getProduit().getPrix() + ligneCommande.getQtte();
+			prix += ligneCommande.getProduit().getPrix() * ligneCommande.getQtte();
 		}
 		this.prixTotal = prix;
 	}
