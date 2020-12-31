@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ma.fstt.entities.Commande"%>
+<%@page import="ma.fstt.entities.Client"%>
 <%@page import="java.util.ListIterator"%>
 <!DOCTYPE html>
 <html>
@@ -24,6 +25,11 @@
 <body>
 	<%  ArrayList<Commande> commandes =   (ArrayList<Commande>)request.getAttribute("commandes"); %>
 	<% if(commandes == null) commandes = new ArrayList(); %>
+	<% 
+		String urlClientId = "";
+		Client client = (Client)request.getAttribute("client");
+		if(client != null) urlClientId = "&idClient=" + client.getId();
+	%>
 	
 	<div class="center">
 	
@@ -56,7 +62,7 @@
 	</div>
 	<br><br>
 	<div class="center">
-		<a href="ajouterCommande">
+		<a href="ajouterCommande<%= urlClientId%>">
 			<button>Ajouter Commande</button>
 		</a>
 	</div>

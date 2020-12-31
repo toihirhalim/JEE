@@ -51,6 +51,7 @@ public class ListCommandes extends HttpServlet {
 				Client client = clientDao.trouverById(id);
 				 
 				commandes = commandeDao.listCommande(client);
+				request.setAttribute("client", client);
 				
 				for(Commande commande : commandes) {
 					commande.setClient(client);
