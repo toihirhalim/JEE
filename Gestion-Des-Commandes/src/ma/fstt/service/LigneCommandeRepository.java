@@ -9,6 +9,7 @@ import ma.fstt.entities.Produit;
 
 public interface LigneCommandeRepository {
 	LigneCommande trouverById(int id)throws SQLException;
+	LigneCommande trouver(Commande commande, Produit produit)throws SQLException;
 	void ajouterLigneCommande(LigneCommande ligneCommande)throws SQLException;
 	List<LigneCommande> listLigneCommande()throws SQLException;
 	List<LigneCommande> listLigneCommande(Commande commande)throws SQLException;

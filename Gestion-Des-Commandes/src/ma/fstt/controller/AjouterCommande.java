@@ -16,6 +16,7 @@ import ma.fstt.dao.ProduitDAO;
 import ma.fstt.entities.Client;
 import ma.fstt.entities.Commande;
 import ma.fstt.entities.LigneCommande;
+import ma.fstt.entities.Produit;
 
 /**
  * Servlet implementation class AjouterCommande
@@ -41,6 +42,7 @@ public class AjouterCommande extends HttpServlet {
 			ClientDAO clientDao = new ClientDAO();
 			//String idCommande = request.getParameter("idClient");
 			String idCommande = request.getParameter("idCommande");
+			
 			if(idCommande != null) {
 				int id = Integer.parseInt(idCommande);
 				CommandeDAO commandeDao = new CommandeDAO();
@@ -48,6 +50,8 @@ public class AjouterCommande extends HttpServlet {
 				ProduitDAO produitDAO = new ProduitDAO();
 				
 				Commande commande = commandeDao.trouverById(id);
+
+				System.out.println(commande);
 				commande.setClient(clientDao.trouverById(commande.getIdClient()));
 				
 				commande.setLigneCommandes(lignecommandeDao.listLigneCommande(commande));
@@ -57,6 +61,7 @@ public class AjouterCommande extends HttpServlet {
 				}
 				
 				commande.calculatePrixTotal();
+				request.setAttribute("commande", commande);
 				
 			}else {
 				String idClient = request.getParameter("idClient");
@@ -85,7 +90,58 @@ public class AjouterCommande extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String id = request.getParameter("idCommande");
+		try {
+			int idProduit  = Integer.parseInt(request.getParameter("idProduit"));
+			int qtte  = Integer.parseInt(request.getParameter("qtte"));
+			ProduitDAO produitDAO = new ProduitDAO();
+			Produit produit = produitDAO.trouverById(idProduit);
+			
+			if(produit != null) {
+				CommandeDAO commandeDao = new CommandeDAO();
+				LigneCommandeDAO ligneCommandeDAO = new LigneCommandeDAO();
+				int idCommand = Integer.parseInt(id);
+				Commande commande = commandeDao.trouverById(idCommand);
+				LigneCommande ligneCommande;
+				
+				if(commande == null) {
+					ClientDAO clientDao = new ClientDAO();
+					int idClient  = Integer.parseInt(request.getParameter("idProduit"));
+					Client client = clientDao.trouverById(idClient);
+					
+					if(client != null) {
+						commande = new Commande(0, client.getId(), null);
+						
+						commandeDao.ajouterCommande(commande);
+						
+						commande = commandeDao.lastCommande();
+						
+						id =  "" + commande.getId();
+						
+						ligneCommande = new LigneCommande(0, commande.getId(), produit.getId(), qtte);
+						ligneCommandeDAO.ajouterLigneCommande(ligneCommande);
+					}
+				}else {
+					
+					ligneCommande = ligneCommandeDAO.trouver(commande, produit);
+					
+					if(ligneCommande != null) {
+						ligneCommande.setQtte(ligneCommande.getQtte() + qtte);
+						
+						ligneCommandeDAO.updateLigneCommande(ligneCommande);
+					}else {
+						ligneCommande = new LigneCommande(0, commande.getId(), produit.getId(), qtte);
+						ligneCommandeDAO.ajouterLigneCommande(ligneCommande);
+					}
+				}
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("ajouterCommande?idCommande=" + id);
 	}
 
 }

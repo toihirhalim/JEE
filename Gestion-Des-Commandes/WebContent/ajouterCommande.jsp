@@ -46,13 +46,13 @@
 	}
 	
 %>
-
+<br><br>
 	<div>
 		<form action="ajouterCommande"  method="POST">
 			<div class="center">
 				<table>
 					<tr>
-						<td>client Id </td>
+						<td>Commande Id </td>
 						<td>
 							<input type="number" name="idCommande" id="idCommande" value="<%= idCommande %>" readonly/>
 						</td>
@@ -62,11 +62,29 @@
 						</td>
 					</tr>
 					
+					<tr>
+						<td>ID Produit </td>
+						<td>
+							<input type="number" name="idProduit" id="idProduit" required/>
+						</td>
+						
+					</tr>
+					
+					<tr>
+						<td>Quantite </td>
+						<td>
+							<input type="number" name="qtte" id="qtte" value="1" required/>
+						</td>
+						
+					</tr>
+					
 				</table>
 			</div>
+			<br><br>
 			<div class="center">
-				<button type="submit">Ok</button>
+				<button type="submit">Add</button>
 			</div>
+			<br><br>
 			<div class="center">
 				<table>
 					<thead class="head">

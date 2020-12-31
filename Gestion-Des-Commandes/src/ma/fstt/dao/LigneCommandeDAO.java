@@ -49,6 +49,32 @@ public class LigneCommandeDAO implements LigneCommandeRepository {
 		
 		return ligneCommande;
 	}
+	
+	@Override
+	public LigneCommande trouver(Commande commande, Produit produit) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "select *  from ligne_commande where idCommande = ? AND idProduit = ?";
+		
+		LigneCommande ligneCommande = null;
+		
+		this.preparedStatement = this.connection.prepareStatement(sql);
+
+		this.preparedStatement.setInt(1,commande.getId());
+		this.preparedStatement.setInt(2,produit.getId());
+		
+		this.resultSet = this.preparedStatement.executeQuery();
+		
+		while(this.resultSet.next()) {
+		
+			ligneCommande = new LigneCommande(this.resultSet.getInt(1), this.resultSet.getInt(2), this.resultSet.getInt(3), this.resultSet.getInt(4));
+			
+			break ;
+			
+		}
+		
+		return ligneCommande;
+	}
+	
 	@Override
 	public void ajouterLigneCommande(LigneCommande ligneCommande) throws SQLException {
 		// TODO Auto-generated method stub
@@ -149,6 +175,7 @@ public class LigneCommandeDAO implements LigneCommandeRepository {
 		
 		this.preparedStatement.execute();
 	}
+	
 	
 	
 	

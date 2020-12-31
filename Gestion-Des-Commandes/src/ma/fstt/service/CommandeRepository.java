@@ -8,6 +8,7 @@ import ma.fstt.entities.Commande;
 
 public interface CommandeRepository {
 	Commande trouverById(int id)throws SQLException;
+	Commande lastCommande()throws SQLException;
 	void ajouterCommande(Commande commande)throws SQLException;
 	List<Commande> listCommande()throws SQLException;
 	List<Commande> listCommande(Client client)throws SQLException;

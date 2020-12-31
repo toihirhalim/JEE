@@ -49,6 +49,30 @@ public class CommandeDAO implements CommandeRepository{
 		
 		return commande;
 	}
+	
+	@Override
+	public Commande lastCommande() throws SQLException {
+		// TODO Auto-generated method stub
+		this.statement = this.connection.createStatement();
+		
+		String sql = "SELECT * FROM commande ORDER BY idCommande DESC LIMIT 1;";
+		
+		this.resultSet = this.statement.executeQuery(sql);
+		
+		Commande commande = null;
+		
+		while(this.resultSet.next()) {
+			
+			
+			commande = new Commande(this.resultSet.getInt(1), this.resultSet.getInt(2), null /*this.resultSet.getDate(2)*/);
+			
+			break ;
+			
+		}
+		
+		return commande;
+	}
+
 
 	@Override
 	public void ajouterCommande(Commande commande) throws SQLException {
@@ -134,5 +158,4 @@ public class CommandeDAO implements CommandeRepository{
 	}
 
 	
-
 }

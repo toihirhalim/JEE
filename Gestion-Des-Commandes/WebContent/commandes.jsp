@@ -52,7 +52,7 @@
 				<td> <%=commandes.get(i).getDate() %> </td>
 				<td> <%=commandes.get(i).getPrixTotal() %> </td>
 				<td> <a href="deleteCommande?id=<%=commandes.get(i).getId() %>" >  delete </a> </td>
-				<td> <a href="updateCommande?id=<%=commandes.get(i).getId() %>" >  update </a>  </td>
+				<td> <a href="ajouterCommande?idCommande=<%=commandes.get(i).getId() %>" >  update </a>  </td>
 				
 			</tr>
 			<%} %>
