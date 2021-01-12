@@ -3,6 +3,42 @@
   <groupId>E-Commerce-JSF-JPA</groupId>
   <artifactId>E-Commerce-JSF-JPA</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  
+  	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>8.0.12</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.persistence</groupId>
+		<artifactId>javax.persistence</artifactId>
+		<version>2.0.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.eclipse.persistence</groupId>
+		<artifactId>eclipselink</artifactId>
+		<version>2.7.5</version>
+	</dependency>
+	<dependency>
+		<groupId>com.sun.faces</groupId>
+		<artifactId>jsf-api</artifactId>
+		<version>2.2.20</version>
+	</dependency>
+
+	<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.2.20</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+  </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
