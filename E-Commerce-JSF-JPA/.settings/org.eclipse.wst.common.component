@@ -2,6 +2,7 @@
     <wb-module deploy-name="E-Commerce-JSF-JPA">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/META-INF"/>
         <property name="context-root" value="E-Commerce-JSF-JPA"/>
         <property name="java-output-path" value="/E-Commerce-JSF-JPA/build/classes"/>
     </wb-module>
