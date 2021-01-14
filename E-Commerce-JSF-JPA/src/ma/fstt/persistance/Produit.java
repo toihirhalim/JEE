@@ -88,5 +88,10 @@ public class Produit {
 		this.lignePanierCommandes = lignePanierCommandes;
 	}
 
+	@Override
+	public String toString() {
+		return "Produit [id=" + id + ", libele=" + libele + ", prix=" + prix + "]";
+	}
+
 	
 }

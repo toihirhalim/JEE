@@ -75,6 +75,10 @@ public class Client {
 	public void setPanier(Panier panier) {
 		this.panier = panier;
 	}
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", nom=" + nom + ", adresse=" + adresse + "]";
+	}
 	
 	
 }

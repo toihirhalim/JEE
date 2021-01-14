@@ -71,6 +71,11 @@ public class Panier {
 	public void setLignePanierCommande(List<LignePanierCommande> lignePanierCommande) {
 		this.lignePanierCommande = lignePanierCommande;
 	}
+
+	@Override
+	public String toString() {
+		return "Panier [id=" + id + ", total=" + total + "]";
+	}
 	
 	
 	

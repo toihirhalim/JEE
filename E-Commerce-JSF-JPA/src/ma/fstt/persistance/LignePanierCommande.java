@@ -85,6 +85,11 @@ public class LignePanierCommande {
 	public void setQtte(int qtte) {
 		this.qtte = qtte;
 	}
+
+	@Override
+	public String toString() {
+		return "LignePanierCommande [id=" + id + ", qtte=" + qtte + "]";
+	}
 	
 	
 

@@ -65,6 +65,10 @@ public class Commande {
 	public void setLignePanierCommandes(List<LignePanierCommande> lignePanierCommandes) {
 		this.lignePanierCommandes = lignePanierCommandes;
 	}
+	@Override
+	public String toString() {
+		return "Commande [id=" + id + ", date=" + date + "]";
+	}
 	
 	
 }
