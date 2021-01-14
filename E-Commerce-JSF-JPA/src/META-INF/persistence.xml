@@ -6,6 +6,11 @@
 	<persistence-unit name="e_commerce" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>ma.fstt.persistance.Produit</class>
+		<class>ma.fstt.persistance.Cathegorie</class>
+		<class>ma.fstt.persistance.Client</class>
+		<class>ma.fstt.persistance.Panier</class>
+		<class>ma.fstt.persistance.Commande</class>
+		<class>ma.fstt.persistance.LignePanierCommande</class>
 		
  	     
 		<properties>

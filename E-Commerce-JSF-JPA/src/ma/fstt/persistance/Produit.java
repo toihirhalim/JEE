@@ -1,10 +1,16 @@
 package ma.fstt.persistance;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +28,14 @@ public class Produit {
 	@Column(nullable = false)
 	private int prix;
 
+	@ManyToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name="cathegorie_id")
+	private Cathegorie cathegorie;
+	
+	@OneToMany(mappedBy = "produit")
+	private List<LignePanierCommande> lignePanierCommandes;
+	
+	
 	public Produit() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -56,6 +70,22 @@ public class Produit {
 
 	public void setPrix(int prix) {
 		this.prix = prix;
+	}
+
+	public Cathegorie getCathegorie() {
+		return cathegorie;
+	}
+
+	public void setCathegorie(Cathegorie cathegorie) {
+		this.cathegorie = cathegorie;
+	}
+
+	public List<LignePanierCommande> getLignePanierCommandes() {
+		return lignePanierCommandes;
+	}
+
+	public void setLignePanierCommandes(List<LignePanierCommande> lignePanierCommandes) {
+		this.lignePanierCommandes = lignePanierCommandes;
 	}
 
 	
