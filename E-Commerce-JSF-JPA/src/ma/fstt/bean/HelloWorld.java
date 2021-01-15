@@ -3,8 +3,9 @@ package ma.fstt.bean;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
-@ManagedBean(name = "helloBean")
-public class HelloTest {
+@ManagedBean(name = "helloBena")
+public class HelloWorld {
+
 	private String messge ;
 
 	public String getMessge() {

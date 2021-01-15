@@ -31,6 +31,13 @@ public class Test {
 				System.out.println(cathegorie);
 			}*/
 			
+			/*Client client = DatabaseOperations.getClient("Peter");
+			System.out.println(client +"" +  client.getPanier());*/
+			
+			//System.out.println(DatabaseOperations.getCathegorie("foods"));
+			
+			//System.out.println(DatabaseOperations.creerProduit("Rice", 14, "foods"));
+			
 	}
 
 }

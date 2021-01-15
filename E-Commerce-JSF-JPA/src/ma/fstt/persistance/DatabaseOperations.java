@@ -28,6 +28,27 @@ public class DatabaseOperations {
 		return "listEtudiant.xhtml?faces-redirect=true";	
 	}
 	
+	public static String creerProduit(String libele , int prix, String cathegorie) {
+		if(!transactionObj.isActive()) {
+			transactionObj.begin();
+		}
+
+		Produit produit = new Produit(0, libele , prix);
+		
+		Cathegorie cat = getCathegorie(cathegorie);
+		
+		if(cat == null) {
+			cat = new Cathegorie(0, cathegorie);
+		}
+		
+		produit.setCathegorie(cat);
+		
+		entityMgrObj.persist(produit);
+
+		transactionObj.commit();
+		return "listEtudiant.xhtml?faces-redirect=true";	
+	}
+	
 	@SuppressWarnings("rawtypes")
 	public static List<Produit> getAllProduits() {
 		Query queryObj = entityMgrObj.createQuery("SELECT e FROM Produit e");
@@ -48,6 +69,34 @@ public class DatabaseOperations {
 		} else {
 			return null;
 		}
+	}
+	
+	public static Client getClient(String nomClient) {
+		Query query = entityMgrObj.createQuery("select client from Client client where client.nom = :nom") ;
+		query.setParameter("nom", nomClient);
+	
+		List<Client> lList = query.getResultList() ;
+		
+		if (lList != null && lList.size() > 0) {			
+			return lList.get(0);
+		} else {
+			return null;
+		}
+	
+	}
+	
+	public static Cathegorie getCathegorie(String nomCathegorie) {
+		Query query = entityMgrObj.createQuery("select cathegorie from Cathegorie cathegorie where cathegorie.nom = :nom") ;
+		query.setParameter("nom", nomCathegorie);
+	
+		List<Cathegorie> lList = query.getResultList() ;
+		
+		if (lList != null && lList.size() > 0) {			
+			return lList.get(0);
+		} else {
+			return null;
+		}
+	
 	}
 	
 }
