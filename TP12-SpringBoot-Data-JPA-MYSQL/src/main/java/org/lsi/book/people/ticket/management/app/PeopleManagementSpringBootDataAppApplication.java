@@ -29,20 +29,23 @@ CommandLineRunner {
 	}
 	private void createPersons() {
 	// TODO Auto-generated method stub
-	java.util.List<Person> personList = Arrays.asList(new Person("Amine",
-	"Alami", "amine.alami@gmail.com", new Date()),new Person("Hanan", "Sarsri",
-	"hanan.sarsri@gmail.com", new Date()));
-	Iterable<Person> createPersons =
-	peopleMangementService.createPersons(personList);
-	for(Person person : createPersons){
-	System.out.println(person);
-	}
+		java.util.List<Person> personList = Arrays.asList(new Person("Amine",
+		"Alami", "amine.alami@gmail.com", new Date()),new Person("Hanan", "Sarsri",
+		"hanan.sarsri@gmail.com", new Date()));
+		
+		Iterable<Person> createPersons =
+		peopleMangementService.createPersons(personList);
+		
+		for(Person person : createPersons){
+			System.out.println(person);
+		}
 	}
 	private void createPerson() {
 	// TODO Auto-generated method stub
-	Person person1 = new Person("Yasyn", "Elyusufi",
-	"elyusufiyasyn@gmail.com", new Date());
-	Person personDB = peopleMangementService.createPerson(person1);
+		Person person1 = new Person("Yasyn", "Elyusufi",
+		"elyusufiyasyn@gmail.com", new Date());
+		
+		Person personDB = peopleMangementService.createPerson(person1);
 	}
 	private void getPersonByIds() {
 		// TODO Auto-generated method stub
@@ -53,7 +56,7 @@ CommandLineRunner {
 		Iterable<Person> personList = peopleMangementService.getPersonByIds(ids);
 		// Java 8
 		personList.forEach(System.out::println);
-		}
+	}
 	private void deletePersonEntity() {
 		Person person = new Person();
 		person.setId(2);
